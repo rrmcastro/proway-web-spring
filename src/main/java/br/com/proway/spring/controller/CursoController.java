@@ -20,15 +20,6 @@ public class CursoController {
 	@Autowired
 	private CursoRepository cursoRepository;
 
-//	@RequestMapping("/cursos/listarFixo")
-//	public List<CursoDTO> listar() {
-//		Curso curso1 = new Curso("Inglês I", "Línguas");
-//		Curso curso2 = new Curso("Inglês II", "Línguas");
-//		Curso curso3 = new Curso("Excel Avançado", "Informática");
-//
-//		return CursoDTO.converter(Arrays.asList(curso1, curso2, curso3));
-//	}
-
 	@GetMapping
 	public List<CursoDTO> listaTudo() {
 		return CursoDTO.converter(cursoRepository.findAll());

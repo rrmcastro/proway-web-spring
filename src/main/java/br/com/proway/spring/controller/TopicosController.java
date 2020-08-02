@@ -20,17 +20,10 @@ public class TopicosController {
 	@Autowired
 	private TopicoRepository topicoRepository;
 
-//	@RequestMapping("/topicos")
-//	public List<TopicoDTO> listar() {
-//		Topico topico = new Topico("Duvidas", "Dúvidas iniciais com spring", new Curso("Spring", "Programação"));
-//
-//		return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
-//	}
-
-//	@RequestMapping("/topicos/semconverter")
-//	public List<Topico> listaTudoSemConverter() {
-//		return topicoRepository.findAll();
-//	}
+	@RequestMapping("/topicos/semconverter")
+	public List<Topico> listaTudoSemConverter() {
+		return topicoRepository.findAll();
+	}
 
 	@GetMapping
 	public List<TopicoDTO> listaTudo() {
