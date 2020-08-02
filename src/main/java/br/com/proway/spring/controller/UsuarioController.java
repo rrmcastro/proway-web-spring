@@ -19,13 +19,19 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@GetMapping
-	public List<Usuario> listaTudo() {
-		return usuarioRepository.findAll();
-	}
-
 	@PostMapping
 	public void cadastrar(@RequestBody Usuario usuario) {
 		usuarioRepository.save(usuario);
 	}
+
+	@GetMapping
+	public List<Usuario> listar(String nomeUsuario) {
+		
+		return usuarioRepository.findAll();
+	}
+	
+//	@GetMapping(value = "/{id}")
+//	public List<Usuario> listarPorId(Long id){
+//		return usuarioRepository.findOne(id);
+//	}
 }
