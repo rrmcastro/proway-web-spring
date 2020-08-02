@@ -3,6 +3,9 @@ package br.com.proway.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +14,7 @@ import br.com.proway.spring.modelo.Topico;
 import br.com.proway.spring.repository.TopicoRepository;
 
 @RestController
+@RequestMapping("/topicos")
 public class TopicosController {
 
 	@Autowired
@@ -23,14 +27,18 @@ public class TopicosController {
 //		return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
 //	}
 
-	@RequestMapping("/topicos/semconverter")
-	public List<Topico> listaTudoSemConverter() {
-		return topicoRepository.findAll();
-	}
+//	@RequestMapping("/topicos/semconverter")
+//	public List<Topico> listaTudoSemConverter() {
+//		return topicoRepository.findAll();
+//	}
 
-	@RequestMapping("/topicos")
+	@GetMapping
 	public List<TopicoDTO> listaTudo() {
 		return TopicoDTO.converter(topicoRepository.findAll());
 	}
 
+	@PostMapping
+	public void cadastrar(@RequestBody Topico topico) {
+		topicoRepository.save(topico);
+	}
 }
