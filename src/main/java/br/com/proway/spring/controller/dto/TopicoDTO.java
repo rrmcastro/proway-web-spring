@@ -1,5 +1,7 @@
 package br.com.proway.spring.controller.dto;
 
+// DATA TRANSFER OBJECT
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +57,4 @@ public class TopicoDTO {
 	public void setDataCriacao(LocalDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	
-	
-
 }
