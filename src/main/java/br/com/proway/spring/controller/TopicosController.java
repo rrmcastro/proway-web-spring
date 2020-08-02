@@ -1,6 +1,5 @@
 package br.com.proway.spring.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,25 +7,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.proway.spring.controller.dto.TopicoDTO;
-import br.com.proway.spring.modelo.Curso;
 import br.com.proway.spring.modelo.Topico;
 import br.com.proway.spring.repository.TopicoRepository;
 
 @RestController
 public class TopicosController {
-	
-	@Autowired	
+
+	@Autowired
 	private TopicoRepository topicoRepository;
 
-	@RequestMapping("/topicos")
-	public List<TopicoDTO> listar() {
-		Topico topico = new Topico("Duvidas", "Dúvidas iniciais com spring", new Curso("Spring", "Programação"));
+//	@RequestMapping("/topicos")
+//	public List<TopicoDTO> listar() {
+//		Topico topico = new Topico("Duvidas", "Dúvidas iniciais com spring", new Curso("Spring", "Programação"));
+//
+//		return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
+//	}
 
-		return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
-	}
-	
-	@RequestMapping("/topicos/listaTudo")
-	public List<Topico> listaTudo(){
+	@RequestMapping("/topicos/semconverter")
+	public List<Topico> listaTudoSemConverter() {
 		return topicoRepository.findAll();
+	}
+
+	@RequestMapping("/topicos")
+	public List<TopicoDTO> listaTudo() {
+		return TopicoDTO.converter(topicoRepository.findAll());
 	}
 }

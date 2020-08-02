@@ -22,7 +22,7 @@ public class Resposta {
 
 	@ManyToOne
 	private Usuario autor;
-	private Boolean solicao = false;
+	private Boolean solucao = false;
 	
 	public Resposta() {
 	}
@@ -67,12 +67,12 @@ public class Resposta {
 		this.autor = autor;
 	}
 
-	public Boolean getSolicao() {
-		return solicao;
+	public Boolean getSolucao() {
+		return solucao;
 	}
 
-	public void setSolicao(Boolean solicao) {
-		this.solicao = solicao;
+	public void setSolucao(Boolean solicao) {
+		this.solucao = solicao;
 	}
 
 	@Override
