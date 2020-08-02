@@ -32,4 +32,5 @@ public class TopicosController {
 	public List<TopicoDTO> listaTudo() {
 		return TopicoDTO.converter(topicoRepository.findAll());
 	}
+
 }

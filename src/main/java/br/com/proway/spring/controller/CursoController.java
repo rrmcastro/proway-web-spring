@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +20,7 @@ public class CursoController {
 	@Autowired
 	private CursoRepository cursoRepository;
 
-	@RequestMapping("/cursos")
+	@RequestMapping("/cursos/listarFixo")
 	public List<CursoDTO> listar() {
 		Curso curso1 = new Curso("Inglês I", "Línguas");
 		Curso curso2 = new Curso("Inglês II", "Línguas");
@@ -26,8 +29,13 @@ public class CursoController {
 		return CursoDTO.converter(Arrays.asList(curso1, curso2, curso3));
 	}
 
-	@RequestMapping("/cursos/listaTudo")
-	public List<Curso> listaTudo() {
-		return cursoRepository.findAll();
+	@GetMapping
+	public List<CursoDTO> listaTudo() {
+		return CursoDTO.converter(cursoRepository.findAll());
+	}
+
+	@PostMapping
+	public void cadastrar(@RequestBody Curso curso) {
+		cursoRepository.save(curso);
 	}
 }
